@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Client-side logic for Angular App.</description>
+        <global>false</global>
+        <name>x_179056_angular.angular_app_client_logi</name>
+        <script><![CDATA[angular.module('angularapp',[]);
+angular.module('angularapp').controller('AngularAppCtrl', function($scope){
+	
+	$scope.myVar = '';
+	$scope.i = 0;
+	
+	$scope.witticisms = [
+		"C'mon, don't keep me waiting…",
+		"Aw, what'd you do that for…",
+		"You're not playing nice…",
+		"You're *really* not playing nice…",
+		"You think you're funny huh…",
+		"If you're trying to hurt my feelings you're going the right way…",
+		"This seems like it should have gotten boring by now…",
+		"Oh wow, still going I see…",
+		"I guess some people are easily amused…",
+		"You think you're funny huh…",
+		"I'm not sure what's sadder: your persistence or my responding to it…",
+		"I can do this literally all day…",
+		"No seriously…",
+		"ALL DAY…",
+		"And yet, you persist…",
+		"You do realise that I'm a computer, right…",
+		"As in, a bunch of circuitry that has no compunctions about doing senseless tasks endlessly…",
+		"I see I'm not the only one…",
+		"Hmm…",
+		"Well then…",
+		"…",
+		"…",
+		"…",
+		"…",
+		"Really now…",
+		"Dude…",
+		"DUDE…",
+		"OMG…",
+		"*DUDE*…",
+		"Okay, I guess it's time to go…",
+		"Goodbye, cruel world…",
+		"I'm leaving you today…",
+		"Goodbye…",
+		"Goodbye…",
+		"Goodbye…",		
+		"…",
+		"…",
+		"…",
+		"Is there anybody out there…",
+		"…",
+		"…",
+		"…",
+		"…",
+		"Okay bye bye meow…"
+	];
+	
+	$scope.clearTxt = function(){
+		//if($scope.myVar !== '') {
+			$scope.myVar = '';
+			$scope.i++;
+			console.debug("yoooooohooooooo");
+		//}
+		//else {
+		//	console.debug("AYE! Cannaye do it, cap'n!");
+		//}
+	};
+});]]></script>
+        <script_name>angular_app_client_logic</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-07 23:42:22</sys_created_on>
+        <sys_id>997e9c5fdb320300c9b8f8fdbf96198c</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>x_179056_angular.angular_app_client_logi</sys_name>
+        <sys_package display_value="Angular" source="x_179056_angular">d63a90d7db320300c9b8f8fdbf96195a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Angular">d63a90d7db320300c9b8f8fdbf96195a</sys_scope>
+        <sys_update_name>sys_ui_script_997e9c5fdb320300c9b8f8fdbf96198c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-08 00:18:23</sys_updated_on>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>
