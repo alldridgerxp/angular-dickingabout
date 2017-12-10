@@ -6,11 +6,19 @@
         <global>false</global>
         <name>x_179056_angular.angular_app_client_logi</name>
         <script><![CDATA[angular.module('angularapp',[]);
-angular.module('angularapp').controller('AngularAppCtrl', function($scope){
+angular.module('angularapp').controller('AngularAppCtrl', function($scope, $rootScope){
 	
-	$scope.myVar = '';
 	$scope.i = 0;
 	$scope.randBurn = "Well, I'm not saying that you're wrong, but… well yeah, you're wrong.";
+	$scope.randQuestion = "Let me get this straight—you think that";
+	$scope.randInput = "What's on your mind, sugar?";
+	$scope.randClear = "No good? I guess you can always try again…";
+	$scope.randSalutation = 'Hello';
+	$scope.randAnger = 'btn-primary';
+	$scope.quizStep = 1;
+	$scope.username = "";
+	$scope.quest = "";
+	$scope.interestingThing = "";
 	
 	$scope.witticisms = [
 		"C'mon, don't keep me waiting…",
@@ -66,30 +74,91 @@ angular.module('angularapp').controller('AngularAppCtrl', function($scope){
 		"Now that's REALLY weird…",
 		"What the hell man, that's just odd…",
 		"I'm trying to figure out how that even actually works…",
-		"I'm not one to judge, but yet here we are…",
+		"I'm not usually one to judge, yet here we are…",
 		"WHY. JUST WHY.",
 		"Not even gonna go there, sunshine…",
 		"Dude. No.",
 		"UGH.",
 	];
 	
-	$scope.getRandBurn = function(){
-		var length = $scope.sickburns.length;
+	$scope.sickquestions = [
+		"You sincerely, wholeheartedly believe that",
+		"Honestly, you're going to sit there and tell me that",
+		"With hand on heart, the hill that you're prepared to die on is that",
+		"You're not even kidding when you say that you believe that",
+		"Let's not for one second attempt to pretend that you're even remotely right when you say that",
+		"Wait.",
+		"DUDE.",
+		"Hm?",
+		"With no hint of irony you're telling me that"
+	];
+	
+	$scope.sickinputs = [
+		"I hope you're bringing me good news today?",
+		"Tell me something insightful, like about ducks or cows or the Moon.",
+		"Let's just get this over with, shall we?",
+		"Not this guy again…",
+		"Still thinking of something funny to say I see?",
+		"That's a nice shirt you're wearing, does it come in mens?",
+		"Don't like it? Fight me. You won't.",
+		"So, you think you're smarter than a computer eh?"
+	];
+	
+	$scope.sickclears = [
+		"Uh oh, here we go again…",
+		"…",
+		"You're not seriously gonna try again, are you? Oh, you are. Okay. Hm.",
+		"WHY MUST YOU PERSIST?",
+		"You still haven't told me anything insightful yet.",
+		"I'm not even mad, just disappointed at this point",
+		"This is like playing with a child. A very, very dull child.",
+		"Try harder next time.",
+		"Condolences, you're still a fool."
+	];
+	
+	$scope.sicksalutations = [
+		'Ahoyhoy',
+		'Ahoy thar',
+		'Well hello there',
+		'Yo',
+		'Konnichi wa',
+		'Oh hi there'
+	];
+	
+	$scope.sickangers = [
+		'btn-danger',
+		'btn-warning',
+		'btn-info',
+		'btn-success',
+		'btn-primary'
+	];
+		
+	$scope.submitAnswer = function(){
+		$scope.quizStep++;
+		
+		if($scope.quizStep === 3) {
+			$scope.randSalutation = $scope.getRandString($scope.sicksalutations);
+		}
+	};
+	
+	$scope.getRandString = function($input){
+		var length = $input.length;
 		var offset = Math.floor(Math.random() * length);
 	
-		return $scope.sickburns[offset];
+		return $input[offset];
 	};
 	
 	$scope.clearTxt = function(){
-		if($scope.myVar !== '') {
-			$scope.myVar = '';
-			$scope.i++;
-			$scope.randBurn = $scope.getRandBurn();
-			console.debug("yoooooohooooooo");
-		}
-		else {
-			console.debug("AYE! Cannaye do it, cap'n!");
-		}
+		
+		var p = this;
+		
+		p.interestingThing = "";
+		p.i++;
+		p.randBurn = $scope.getRandString($scope.sickburns);
+		p.randQuestion = $scope.getRandString($scope.sickquestions);
+		p.randInput = $scope.getRandString($scope.sickinputs);
+		p.randClear = $scope.getRandString($scope.sickclears);
+		p.randAnger = $scope.getRandString($scope.sickangers)
 	};
 });]]></script>
         <script_name>angular_app_client_logic</script_name>
@@ -97,14 +166,14 @@ angular.module('angularapp').controller('AngularAppCtrl', function($scope){
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-07 23:42:22</sys_created_on>
         <sys_id>997e9c5fdb320300c9b8f8fdbf96198c</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>51</sys_mod_count>
         <sys_name>x_179056_angular.angular_app_client_logi</sys_name>
         <sys_package display_value="Angular" source="x_179056_angular">d63a90d7db320300c9b8f8fdbf96195a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Angular">d63a90d7db320300c9b8f8fdbf96195a</sys_scope>
         <sys_update_name>sys_ui_script_997e9c5fdb320300c9b8f8fdbf96198c</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-08 00:41:33</sys_updated_on>
+        <sys_updated_on>2017-12-10 22:55:49</sys_updated_on>
         <use_scoped_format>false</use_scoped_format>
     </sys_ui_script>
 </record_update>

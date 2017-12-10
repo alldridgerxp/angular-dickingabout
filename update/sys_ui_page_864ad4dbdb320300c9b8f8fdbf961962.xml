@@ -5,50 +5,74 @@
         <client_script/>
         <description>My first AngularJS application in ServiceNow</description>
         <direct>false</direct>
-        <endpoint>x_179056_angular_angular_app.do</endpoint>
+        <endpoint>x_179056_angular_t.do</endpoint>
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	<script src="x_179056_angular.angular_app_client_logi.jsdbx"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
-	
-	
 	<!-- APPLICATION -->
 	<div ng-app="angularapp" ng-controller="AngularAppCtrl as appctrl">
-		<div class="jumbotron">
-			<h1><strong>SALVE MVNDI</strong></h1>
-			<hr class="m-y-2"/>
-			<p ng-if="myVar != ''">Let me get this straight—you think that {{myVar}}? {{randBurn}}.</p>
-			<p ng-if="myVar == ''"><em>{{witticisms[i]}}</em></p>
+		<div class="jumbotron" ng-show="quizStep == 1">
+			<h1><strong>STOP! WHAT IS YOUR NAME?</strong></h1>
 			
 			<div class="row">
 				<div class="col-sm-8">
-					<input type="text" ng-model="myVar" class="form-control" placeholder="What's on your mind, sugar?"/>
+					<input type="text" ng-model="username" class="form-control" placeholder="There are those who call me… Tim…"/>
 				</div>
 				<div class="col-sm-4">
-					<button ng-if="myVar != ''" class="btn btn-danger" ng-click="clearTxt()">No good? Tell me something new</button>
+					<button ng-if="username != ''" class="btn btn-success" ng-click="submitAnswer()">Are you sure?</button>
+				</div>
+			</div>			
+		</div>
+		
+		<div class="jumbotron" ng-show="quizStep == 2">
+			<h1><strong>WHAT IS YOUR QUEST?</strong></h1>
+			
+			<div class="row">
+				<div class="col-sm-8">
+					<input type="text" ng-model="quest" class="form-control" placeholder="We seek the Holy Grail…"/>
+				</div>
+				<div class="col-sm-4">
+					<button ng-if="quest != ''" class="btn btn-warning" ng-click="submitAnswer()">I am not afraid…</button>
+				</div>
+			</div>			
+		</div>
+		
+		<div class="jumbotron" ng-show="quizStep == 3">
+			<h1><strong>{{randSalutation}}, {{username}}. Tell me something interesting.</strong></h1>
+			<hr class="m-y-2"/>
+			
+			<div class="row">
+				<div class="col-sm-8">
+					<input type="text" ng-model="interestingThing" class="form-control" placeholder="{{randInput}}"/>
+				</div>
+				<div class="col-sm-4" ng-show="interestingThing">
+					<button class="btn {{randAnger}}" ng-click="clearTxt()">{{randClear}}</button>
 				</div>
 			</div>
 			
-			
+			<hr class="m-y-2"/>
+			<p ng-show="interestingThing == ''"><em>{{witticisms[i]}}</em></p>
+			<p ng-show="interestingThing != ''">{{randQuestion}} {{interestingThing}}? {{randBurn}}</p>
 			
 		</div>
 	</div>
 	<!-- /APPLICATION -->
 </j:jelly>]]></html>
-        <name>angular_app</name>
+        <name>t</name>
         <processing_script/>
         <sys_class_name>sys_ui_page</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-07 23:23:14</sys_created_on>
         <sys_id>864ad4dbdb320300c9b8f8fdbf961962</sys_id>
-        <sys_mod_count>21</sys_mod_count>
-        <sys_name>angular_app</sys_name>
+        <sys_mod_count>76</sys_mod_count>
+        <sys_name>t</sys_name>
         <sys_package display_value="Angular" source="x_179056_angular">d63a90d7db320300c9b8f8fdbf96195a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Angular">d63a90d7db320300c9b8f8fdbf96195a</sys_scope>
         <sys_update_name>sys_ui_page_864ad4dbdb320300c9b8f8fdbf961962</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-08 00:41:41</sys_updated_on>
+        <sys_updated_on>2017-12-10 22:55:05</sys_updated_on>
     </sys_ui_page>
 </record_update>
