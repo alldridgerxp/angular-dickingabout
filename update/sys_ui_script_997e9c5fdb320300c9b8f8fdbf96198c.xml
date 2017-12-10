@@ -15,6 +15,7 @@ angular.module('angularapp').controller('AngularAppCtrl', function($scope, $root
 	$scope.randClear = "No good? I guess you can always try again…";
 	$scope.randSalutation = 'Hello';
 	$scope.randAnger = 'btn-primary';
+	$scope.randThird = 'WHAT IS YOUR FAVOURITE COLOUR?';
 	$scope.quizStep = 1;
 	$scope.username = "";
 	$scope.quest = "";
@@ -132,11 +133,21 @@ angular.module('angularapp').controller('AngularAppCtrl', function($scope, $root
 		'btn-success',
 		'btn-primary'
 	];
+	
+	$scope.sickthirds = [
+		'WHAT IS THE AIRSPEED VELOCITY OF AN UNLADEN SWALLOW?',
+		'WHAT IS THE CAPITAL OF ASSYRIA?',
+		'WHAT IS YOUR FAVOURITE COLOUR?'
+	];
 		
 	$scope.submitAnswer = function(){
 		$scope.quizStep++;
 		
-		if($scope.quizStep === 3) {
+		if($scope.quizStep === 4){
+			$scope.randThird = $scope.getRandString($scope.sickthirds);
+		}
+		
+		if($scope.quizStep === 5){
 			$scope.randSalutation = $scope.getRandString($scope.sicksalutations);
 		}
 	};
@@ -166,14 +177,14 @@ angular.module('angularapp').controller('AngularAppCtrl', function($scope, $root
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-07 23:42:22</sys_created_on>
         <sys_id>997e9c5fdb320300c9b8f8fdbf96198c</sys_id>
-        <sys_mod_count>51</sys_mod_count>
+        <sys_mod_count>52</sys_mod_count>
         <sys_name>x_179056_angular.angular_app_client_logi</sys_name>
         <sys_package display_value="Angular" source="x_179056_angular">d63a90d7db320300c9b8f8fdbf96195a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Angular">d63a90d7db320300c9b8f8fdbf96195a</sys_scope>
         <sys_update_name>sys_ui_script_997e9c5fdb320300c9b8f8fdbf96198c</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-10 22:55:49</sys_updated_on>
+        <sys_updated_on>2017-12-10 23:12:02</sys_updated_on>
         <use_scoped_format>false</use_scoped_format>
     </sys_ui_script>
 </record_update>
