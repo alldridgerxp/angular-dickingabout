@@ -9,15 +9,63 @@
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
 	<script src="x_179056_angular.angular_app_client_logi.jsdbx"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet"></link>
+	<style type="text/css">
+/* when showing the picture */
+button.ng-hide-remove      { animation:0.5s flipInX ease; }
+		
+div.ng-hide-remove {   transform: rotateY(170deg);
+  transform-origin: left;
+  transition: all 0.5s ease;
+}
+
+/* ANIMATIONS (FROM ANIMATE.CSS) ======================== */
+/* flip in */
+@keyframes flipInX {
+  0% {
+    transform: perspective(100px) rotate3d(1, 0, 0, 90deg);
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(100px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(100px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(100px) rotate3d(1, 0, 0, -20deg);
+    transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(100px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(100px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(100px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(100px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(100px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(100px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  100% {
+    transform: perspective(100px);
+    transform: perspective(100px);
+    transform: perspective(100px);
+  }
+}
+	</style>
 	<!-- APPLICATION -->
 	<div ng-app="angularapp" ng-controller="AngularAppCtrl as appctrl">
 		<div class="jumbotron" ng-show="quizStep == 1">
 			<h1><strong>Stop! Who would cross the Bridge of Death must answer me these questions three, 'ere the other side he see!</strong></h1>
 			
 			<div class="row">
-				<button class="btn btn-warning" ng-click="submitAnswer()">I guess that's fair enough?</button>
+				<button class="btn btn-warning animate-show-hide" ng-click="submitAnswer()">I guess that's fair enough?</button>
 			</div>			
 		</div>
 		
@@ -26,10 +74,10 @@
 			
 			<div class="row">
 				<div class="col-sm-8">
-					<input type="text" ng-model="username" class="form-control" placeholder="There are those who call me… Tim…"/>
+					<input type="text" ng-model="username" class="form-control" ng-model-options="{ debounce: { 'default': 300, blur: 0 } }" placeholder="There are those who call me… Tim…"/>
 				</div>
 				<div class="col-sm-4">
-					<button ng-if="username != ''" class="btn btn-success" ng-click="submitAnswer()">Are you sure?</button>
+					<button ng-show="username != ''" class="btn btn-success" ng-click="submitAnswer()">Are you sure?</button>
 				</div>
 			</div>			
 		</div>
@@ -39,10 +87,10 @@
 			
 			<div class="row">
 				<div class="col-sm-8">
-					<input type="text" ng-model="quest" class="form-control" placeholder="We seek the Holy Grail…"/>
+					<input type="text" ng-model="quest" ng-model-options="{ debounce: { 'default': 300, blur: 0 } }" class="form-control" placeholder="We seek the Holy Grail…"/>
 				</div>
 				<div class="col-sm-4">
-					<button ng-if="quest != ''" class="btn btn-warning" ng-click="submitAnswer()">I am not afraid…</button>
+					<button ng-show="quest != ''" class="btn btn-warning" ng-click="submitAnswer()">I am not afraid…</button>
 				</div>
 			</div>			
 		</div>
@@ -54,10 +102,10 @@
 			
 			<div class="row">
 				<div class="col-sm-8">
-					<input type="text" ng-model="swallow" class="form-control" placeholder="Are you suggesting coconuts migrate…?"/>
+					<input type="text" ng-model="swallow" ng-model-options="{ debounce: { 'default': 300, blur: 0 } }" class="form-control" placeholder="Are you suggesting coconuts migrate…?"/>
 				</div>
 				<div class="col-sm-4">
-					<button ng-if="swallow != ''" class="btn btn-danger" ng-click="submitAnswer()">Righto, off you go.</button>
+					<button ng-show="swallow != ''" class="btn btn-danger animate-show-hide" ng-click="submitAnswer()">Righto, off you go.</button>
 				</div>
 			</div>			
 		</div>
@@ -68,10 +116,10 @@
 			
 			<div class="row">
 				<div class="col-sm-8">
-					<input type="text" ng-model="interestingThing" class="form-control" placeholder="{{randInput}}"/>
+					<input type="text" ng-model="interestingThing" ng-model-options="{ debounce: { 'default': 400, blur: 0 } }" class="form-control" placeholder="{{randInput}}"/>
 				</div>
-				<div class="col-sm-4" ng-show="interestingThing">
-					<button class="btn {{randAnger}}" ng-click="clearTxt()">{{randClear}}</button>
+				<div class="col-sm-4">
+					<button class="btn {{randAnger}}" ng-show="interestingThing" ng-click="clearTxt()">{{randClear}}</button>
 				</div>
 			</div>
 			
@@ -89,13 +137,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-07 23:23:14</sys_created_on>
         <sys_id>864ad4dbdb320300c9b8f8fdbf961962</sys_id>
-        <sys_mod_count>82</sys_mod_count>
+        <sys_mod_count>98</sys_mod_count>
         <sys_name>t</sys_name>
         <sys_package display_value="Angular" source="x_179056_angular">d63a90d7db320300c9b8f8fdbf96195a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Angular">d63a90d7db320300c9b8f8fdbf96195a</sys_scope>
         <sys_update_name>sys_ui_page_864ad4dbdb320300c9b8f8fdbf961962</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-10 23:12:49</sys_updated_on>
+        <sys_updated_on>2017-12-12 01:02:35</sys_updated_on>
     </sys_ui_page>
 </record_update>
